@@ -4,8 +4,13 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="go_to_unit_2_button_label">Go to Unit 2</string>
+    <string name="go_to_unit_1_button_label">Go to Unit 1</string>
+    <string name="unit_1_textview_label">Unit 1</string>
+    <!-- Strings for the residents' buttons -->
+    <string name="unit_1_resident_1_button_label">Resident 1</string>
+    <string name="unit_1_resident_2_button_label">Resident 2</string>
+
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
