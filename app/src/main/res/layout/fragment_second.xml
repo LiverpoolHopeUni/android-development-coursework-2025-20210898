@@ -9,27 +9,43 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="5dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/previous"
-            app:layout_constraintBottom_toTopOf="@id/textview_second"
+            style="@style/NavigationButtonStyle"
+            android:text="@string/go_to_unit_1_button_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/unit_2_textView"/>
 
         <TextView
-            android:id="@+id/textview_second"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/lorem_ipsum"
+            android:id="@+id/unit_2_textView"
+            style="@style/MyTextViewStyle"
+            android:text="@string/unit_2_textview_label"
+            app:layout_constraintTop_toBottomOf="@id/button_second"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/unit_2_resident_1_button"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/unit_2_resident_1_button"
+            style="@style/ResidentButtonStyle"
+            android:text="@string/unit_1_resident_1_button_label"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/unit_2_resident_2_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/unit_2_textView" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/unit_2_resident_2_button"
+            style="@style/ResidentButtonStyle"
+            android:text="@string/unit_1_resident_2_button_label"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/button_second" />
+            app:layout_constraintStart_toEndOf="@id/unit_2_resident_1_button"
+            app:layout_constraintTop_toBottomOf="@id/unit_2_textView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
