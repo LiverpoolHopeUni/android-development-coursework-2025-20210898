@@ -96,7 +96,7 @@ public class FirstFragment extends Fragment {
                 ConstraintSet.END,
                 ConstraintSet.PARENT_ID,
                 ConstraintSet.END,
-                margin); // Connects the start of the new button to the start of parent
+                margin); // Connects the end of the new button to the end of parent
 
 
         // Now applying the constraints to fragment_first's ConstraintLayout
