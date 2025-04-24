@@ -5,15 +5,28 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="unit_one_res_one_frag_label">Resident One</string>
     <string name="go_to_unit_2_button_label">Go to Unit 2</string>
     <string name="go_to_unit_1_button_label">Go to Unit 1</string>
+
+    <!--  Fragment title strings  -->
     <string name="unit_1_textview_label">Unit 1</string>
     <string name="unit_2_textview_label">Unit 2</string>
-
 
     <!-- Strings for the residents' buttons -->
     <string name="unit_1_resident_1_button_label">Resident 1</string>
     <string name="unit_1_resident_2_button_label">Resident 2</string>
+    <string name="unit_2_resident_1_button_label">Resident 2</string>
+    <string name="unit_2_resident_2_button_label">Resident 2</string>
+
+    <string name="new_resident_button_label">New Resident</string>
+
+    <!--  Strings are used inside the resident fragments  -->
+    <string name="residentRoomNum">Room Number:</string>
+    <string name="residentName">Name:</string>
+    <string name="residentAge">Age:</string>
+    <string name="residentBio">Bio:</string>
+    <string name="content_description_profile_picture_of_resident">Profile picture of resident</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

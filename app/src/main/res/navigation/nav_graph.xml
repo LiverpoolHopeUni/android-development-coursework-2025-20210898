@@ -14,7 +14,12 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+
+        <action
+            android:id="@+id/action_unit_one_to_unit_one_resident_one"
+            app:destination="@id/UnitOneResOneFragment"/>
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="uk.ac.hope.mcse.android.coursework.SecondFragment"
@@ -25,4 +30,17 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/UnitOneResOneFragment"
+        android:name="uk.ac.hope.mcse.android.coursework.UnitOneResOneFragment"
+        android:label="@string/unit_1_resident_1_button_label"
+        tools:layout="@layout/fragment_unit_one_res_one">
+
+        <action
+            android:id="@+id/action_unit_one_res_one_to_unit_one"
+            app:destination="@+id/FirstFragment"/>
+
+    </fragment>
+
 </navigation>

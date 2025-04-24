@@ -5,42 +5,4 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
     
-    <!-- Creating a subclass of Material3.Button to customise attributes -->
-    <style name="MyButtonStyle" parent="Widget.Material3.Button">
-        <item name="android:textColor">@color/black</item>
-        <item name="shapeAppearance">@style/MyButtonShape</item>
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-
-    </style>
-
-    <!--  This is necessary to make my buttons have no rounded corners  -->
-    <!--  Rounded corners were removed so the buttons accommodate the profile icons better  -->
-    <style name="MyButtonShape" parent="ShapeAppearance.Material3.SmallComponent">
-        <item name="cornerSize">0dp</item>
-    </style>
-
-    <!--  Creating subclasses for the resident buttons and the navigation buttons for better scalability  -->
-    <style name="ResidentButtonStyle" parent="MyButtonStyle">
-        <item name="android:drawableTop">@drawable/profile_icon_50x50</item>
-        <item name="android:textSize">20sp</item>
-        <item name="backgroundTint">@color/green</item>
-    </style>
-
-    <style name="NavigationButtonStyle" parent="MyButtonStyle">
-        <item name="android:textSize">30sp</item>
-        <item name="backgroundTint">@color/blue</item>
-    </style>
-    
-    <!--  Creating a subclass of android:Widget.TextView to customise attributes -->
-    <style name="MyTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">30sp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-
-    </style>
-
-    <style name="Theme.CourseworkApp" parent="Base.Theme.CourseworkApp" />
 </resources>
