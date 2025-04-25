@@ -4,55 +4,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".UnitOneResOneFragment">
+    tools:context=".ResidentFragment">
 
     <ImageView
-        android:id="@+id/fragment_unit_one_resident_one_profile_imageview"
+        android:id="@+id/resident_profile_picture_imageview"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:contentDescription="@string/content_description_profile_picture_of_resident"
-        android:src="@drawable/profile_icon_50x50"
+        android:src="@drawable/default_profile_icon_50x50"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/fragment_unit_one_resident_one_room_num_textview"
+        app:layout_constraintBottom_toTopOf="@id/resident_room_number_textview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-        android:id="@+id/fragment_unit_one_resident_one_room_num_textview"
+        android:id="@+id/resident_room_number_textview"
         style="@style/ResidentInformationTextView"
         android:text="@string/residentRoomNum"
-        app:layout_constraintTop_toBottomOf="@id/fragment_unit_one_resident_one_profile_imageview"
-        app:layout_constraintBottom_toTopOf="@id/fragment_unit_one_resident_one_name_textview"
+        app:layout_constraintTop_toBottomOf="@id/resident_profile_picture_imageview"
+        app:layout_constraintBottom_toTopOf="@id/resident_name_textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/fragment_unit_one_resident_one_name_textview"
+        android:id="@+id/resident_name_textview"
         style="@style/ResidentInformationTextView"
         android:text="@string/residentName"
-        app:layout_constraintTop_toBottomOf="@id/fragment_unit_one_resident_one_room_num_textview"
-        app:layout_constraintBottom_toTopOf="@id/fragment_unit_one_resident_one_age_textview"
+        app:layout_constraintTop_toBottomOf="@id/resident_room_number_textview"
+        app:layout_constraintBottom_toTopOf="@id/resident_age_textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/fragment_unit_one_resident_one_age_textview"
+        android:id="@+id/resident_age_textview"
         style="@style/ResidentInformationTextView"
         android:text="@string/residentAge"
-        app:layout_constraintTop_toBottomOf="@id/fragment_unit_one_resident_one_name_textview"
-        app:layout_constraintBottom_toTopOf="@id/fragment_unit_one_resident_one_bio_textview"
+        app:layout_constraintTop_toBottomOf="@id/resident_name_textview"
+        app:layout_constraintBottom_toTopOf="@id/resident_bio_textview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/fragment_unit_one_resident_one_bio_textview"
+        android:id="@+id/resident_bio_textview"
         style="@style/ResidentInformationTextView"
         android:text="@string/residentBio"
-        app:layout_constraintTop_toBottomOf="@id/fragment_unit_one_resident_one_age_textview"
+        app:layout_constraintTop_toBottomOf="@id/resident_age_textview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

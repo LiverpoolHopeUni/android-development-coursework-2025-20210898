@@ -33,6 +33,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/unit_1_resident_1_button"
             style="@style/ResidentButtonStyle"
+            android:drawableTop="@drawable/old_man_profile_pic_50x50"
             android:text="@string/unit_1_resident_1_button_label"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/unit_1_resident_2_button"
@@ -42,6 +43,7 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/unit_1_resident_2_button"
             style="@style/ResidentButtonStyle"
+            android:drawableTop="@drawable/old_woman_profile_pic_50x50"
             android:text="@string/unit_1_resident_2_button_label"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

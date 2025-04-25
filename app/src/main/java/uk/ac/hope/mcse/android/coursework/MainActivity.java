@@ -38,35 +38,33 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         binding.fab.setOnClickListener(view -> {
-            // Get the NavigationHostFragment that holds the first and second fragment
-            Fragment currentNavigationHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-            // Checking if it is a NavigationHostFragment
-            if (currentNavigationHostFragment instanceof NavHostFragment) {
-                // Get the current fragment being displayed. In this case, it could be the first or second fragment
-                Fragment fragment = ((NavHostFragment) currentNavigationHostFragment).getChildFragmentManager().getPrimaryNavigationFragment();
-                // Is the current fragment being displayed the first fragment?
-                if (fragment instanceof FirstFragment) {
-                    ((FirstFragment) fragment).createNewResidentButton();
-                }
-            }
+//            // Get the NavigationHostFragment that holds the first and second fragment
+//            Fragment currentNavigationHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
+//            // Checking if it is a NavigationHostFragment
+//            if (currentNavigationHostFragment instanceof NavHostFragment) {
+//                // Get the current fragment being displayed. In this case, it could be the first or second fragment
+//                Fragment fragment = ((NavHostFragment) currentNavigationHostFragment).getChildFragmentManager().getPrimaryNavigationFragment();
+//                // Is the current fragment being displayed the first fragment?
+//                if (fragment instanceof FirstFragment) {
+//                    ((FirstFragment) fragment).createNewResidentButton();
+//                }
+//            }
+            navController.navigate(R.id.action_FirstFragment_to_createResidentFragment);
+
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }

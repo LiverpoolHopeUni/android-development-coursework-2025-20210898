@@ -3,28 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/FirstFragment" >
 
     <fragment
         android:id="@+id/FirstFragment"
         android:name="uk.ac.hope.mcse.android.coursework.FirstFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_first" >
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
 
         <action
-            android:id="@+id/action_unit_one_to_unit_one_resident_one"
-            app:destination="@id/UnitOneResOneFragment"/>
+            android:id="@+id/action_unit_one_to_resident"
+            app:destination="@id/ResidentFragment" />
+
+        <action
+            android:id="@+id/action_FirstFragment_to_createResidentFragment"
+            app:destination="@id/createResidentFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/SecondFragment"
         android:name="uk.ac.hope.mcse.android.coursework.SecondFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_second" >
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
@@ -32,14 +37,41 @@
     </fragment>
 
     <fragment
-        android:id="@+id/UnitOneResOneFragment"
-        android:name="uk.ac.hope.mcse.android.coursework.UnitOneResOneFragment"
-        android:label="@string/unit_1_resident_1_button_label"
-        tools:layout="@layout/fragment_unit_one_res_one">
+        android:id="@+id/ResidentFragment"
+        android:name="uk.ac.hope.mcse.android.coursework.ResidentFragment"
+        android:label="@string/residentString"
+        tools:layout="@layout/fragment_resident" >
 
         <action
-            android:id="@+id/action_unit_one_res_one_to_unit_one"
-            app:destination="@+id/FirstFragment"/>
+            android:id="@+id/resident_to_unit_one"
+            app:destination="@+id/FirstFragment" />
+
+        <argument
+            android:name="room_number"
+            app:argType="integer" />
+
+        <argument
+            android:name="name"
+            app:argType="string" />
+
+        <argument
+            android:name="age"
+            app:argType="integer" />
+
+        <argument
+            android:name="bio"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createResidentFragment"
+        android:name="uk.ac.hope.mcse.android.coursework.CreateResidentFragment"
+        android:label="fragment_create_resident"
+        tools:layout="@layout/fragment_create_resident" >
+
+        <action
+            android:id="@+id/action_createResidentFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
 
     </fragment>
 

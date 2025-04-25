@@ -17,7 +17,7 @@
 
     <!--  Creating subclasses for the resident buttons and the navigation buttons for better scalability  -->
     <style name="ResidentButtonStyle" parent="MyButtonStyle">
-        <item name="android:drawableTop">@drawable/profile_icon_50x50</item>
+        <item name="android:drawableTop">@drawable/default_profile_icon_50x50</item>
         <item name="android:textSize">20sp</item>
         <item name="backgroundTint">@color/green</item>
     </style>
