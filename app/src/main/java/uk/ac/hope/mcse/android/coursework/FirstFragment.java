@@ -2,6 +2,7 @@ package uk.ac.hope.mcse.android.coursework;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.button.MaterialButton;
@@ -54,10 +57,9 @@ public class FirstFragment extends Fragment {
 
         // These methods are triggered when the buttons are clicked
         // When clicked, they send resident's data to the resident template fragment to be displayed
-
         binding.unit1Resident1Button.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putInt("imageResId", R.drawable.old_man_profile_pic_512x512);
+            bundle.putInt("imageResID", R.drawable.old_man_profile_pic_512x512);
             bundle.putInt("room_number", 1);
             bundle.putString("name", "Steve Stevenson");
             bundle.putInt("age", 81);
@@ -69,7 +71,7 @@ public class FirstFragment extends Fragment {
 
         binding.unit1Resident2Button.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putInt("imageResId", R.drawable.old_woman__profile_pic_256x256);
+            bundle.putInt("imageResID", R.drawable.old_woman__profile_pic_256x256);
             bundle.putInt("room_number", 2);
             bundle.putString("name", "Ellen Ellington");
             bundle.putInt("age", 78);
@@ -79,16 +81,12 @@ public class FirstFragment extends Fragment {
                     .navigate(R.id.action_unit_one_to_resident, bundle);
         });
 
-        // When the user has entered the information for a new resident and clicked submit in the
-        // CreateResident_Fragment.java fragment, the fragment sends a request to this fragment
-        // to create a button for the new resident
-        getParentFragmentManager().setFragmentResultListener("newResident", this, (requestKey, bundle) -> {
-            int room_number = bundle.getInt("room_number");
-            String name = bundle.getString("name");
-            int age = bundle.getInt("age");
-            String bio = bundle.getString("bio");
+        ResidentsViewModel viewModel = new ViewModelProvider(requireActivity()).get(ResidentsViewModel.class);
 
-            createNewResidentButton(room_number, name, age, bio);
+        viewModel.getResidents().observe(getViewLifecycleOwner(), residents -> {
+            for (Resident r : residents) {
+                createNewResidentButton(r.getProfilePicture(), r.getRoomNumber(), r.getName(), r.getAge(), r.getBio());
+            }
         });
 
     }
@@ -100,7 +98,9 @@ public class FirstFragment extends Fragment {
     }
 
     @SuppressLint("SetTextI18n")
-    public void createNewResidentButton(int room_number, String name, int age, String bio) {
+    public void createNewResidentButton(Uri profile_picture, int room_number, String name, int age, String bio) {
+        ResidentsViewModel viewModel = new ViewModelProvider(requireActivity()).get(ResidentsViewModel.class);
+
         // Issues arose when trying to make this new button use a predefined style in themes.xml
         // therefore, chosen attributes are changed manually here
 
@@ -112,6 +112,7 @@ public class FirstFragment extends Fragment {
         MaterialButton newButton = new MaterialButton(context);
 
         // Setting its attributes
+        newButton.setTag(profile_picture);
         newButton.setId(View.generateViewId());
         newButton.setText(name);
         newButton.setBackgroundColor(ContextCompat.getColor(context, R.color.green));
@@ -170,12 +171,11 @@ public class FirstFragment extends Fragment {
         // Now applying the constraints to fragment_first's ConstraintLayout
         constraintSet.applyTo(layout);
 
-
         // Now the new resident button has been created, when it is clicked it sends the information
         // given by a user to ResidentFragment which displays the information
         newButton.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putInt("imageResId", R.drawable.old_man_profile_pic_512x512);
+            bundle.putParcelable("profile_picture", profile_picture);
             bundle.putInt("room_number", room_number);
             bundle.putString("name", name);
             bundle.putInt("age", age);

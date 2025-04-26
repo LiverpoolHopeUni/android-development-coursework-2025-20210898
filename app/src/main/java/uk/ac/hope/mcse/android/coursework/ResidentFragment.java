@@ -1,5 +1,6 @@
 package uk.ac.hope.mcse.android.coursework;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,13 +34,18 @@ public class ResidentFragment extends Fragment {
 
         Bundle args = getArguments();
         if (args != null) {
-            int imageResId = args.getInt("imageResId", R.drawable.default_profile_icon_50x50);
+
+            Uri profile_picture_uri = args.getParcelable("profile_picture");
+            int profile_picture_not_uri = args.getInt("imageResID");
             int room_number = args.getInt("room_number", 0);
             String name = args.getString("name", "No name");
             int age = args.getInt("age", 0);
             String bio = args.getString("bio", "No bio");
 
-            binding.residentProfilePictureImageview.setImageResource(imageResId);
+            binding.residentProfilePictureImageview.setImageURI(profile_picture_uri != null ?
+                    profile_picture_uri :
+                    Uri.parse("android.resource://" + getContext().getPackageName() +
+                            "/" + profile_picture_not_uri));
             binding.residentRoomNumberTextview.append(" " + room_number);
             binding.residentNameTextview.append(" " + name);
             binding.residentAgeTextview.append(" " + age);
