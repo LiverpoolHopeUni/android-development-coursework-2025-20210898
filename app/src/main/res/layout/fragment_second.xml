@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
+    tools:context=".SecondFragment"
+    android:id="@+id/fragment_second">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_second_constraint_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp">
@@ -32,7 +34,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/unit_2_resident_1_button"
             style="@style/ResidentButtonStyle"
-            android:text="@string/unit_1_resident_1_button_label"
+            android:text="@string/william_wilson_string"
+            android:drawableTop="@drawable/old_man_profile_icon_50x50_02"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/unit_2_resident_2_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +44,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/unit_2_resident_2_button"
             style="@style/ResidentButtonStyle"
-            android:text="@string/unit_1_resident_2_button_label"
+            android:text="@string/lucy_lucinda_string"
+            android:drawableTop="@drawable/old_woman_profile_icon_50x50_02"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/unit_2_resident_1_button"

@@ -16,11 +16,11 @@
             app:destination="@id/SecondFragment" />
 
         <action
-            android:id="@+id/action_unit_one_to_resident"
+            android:id="@+id/action_FirstFragment_to_ResidentFragment"
             app:destination="@id/ResidentFragment" />
 
         <action
-            android:id="@+id/action_FirstFragment_to_createResidentFragment"
+            android:id="@+id/action_FirstFragment_to_CreateResidentFragment"
             app:destination="@id/createResidentFragment" />
 
     </fragment>
@@ -34,6 +34,12 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_ResidentFragment"
+            app:destination="@id/ResidentFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_CreateResidentFragment"
+            app:destination="@id/createResidentFragment" />
     </fragment>
 
     <fragment

@@ -5,12 +5,9 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
-
-import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -37,21 +34,21 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        binding.fab.setOnClickListener(view -> {
-//            // Get the NavigationHostFragment that holds the first and second fragment
-//            Fragment currentNavigationHostFragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment_content_main);
-//            // Checking if it is a NavigationHostFragment
-//            if (currentNavigationHostFragment instanceof NavHostFragment) {
-//                // Get the current fragment being displayed. In this case, it could be the first or second fragment
-//                Fragment fragment = ((NavHostFragment) currentNavigationHostFragment).getChildFragmentManager().getPrimaryNavigationFragment();
-//                // Is the current fragment being displayed the first fragment?
-//                if (fragment instanceof FirstFragment) {
-//                    ((FirstFragment) fragment).createNewResidentButton();
-//                }
-//            }
-            navController.navigate(R.id.action_FirstFragment_to_createResidentFragment);
+        binding.fab.setOnClickListener(v -> {
+            NavDestination currentDestination = navController.getCurrentDestination();
+
+                // Is the fab clicked on the first fragment? Then:
+            if (currentDestination.getId() == R.id.FirstFragment) {
+                navController.navigate(R.id.action_FirstFragment_to_CreateResidentFragment);
+            }
+            // Is the fab clicked on the second fragment? Then:
+            else if (currentDestination.getId() == R.id.SecondFragment) {
+                navController.navigate(R.id.action_SecondFragment_to_CreateResidentFragment);
+            }
+
 
         });
+
     }
 
     @Override

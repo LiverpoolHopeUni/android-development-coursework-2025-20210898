@@ -33,6 +33,12 @@
     <string name="select_resident_picture_button_string">Select Resident Picture</string>
     <string name="create_button_string">Create New Resident</string>
 
+    <!--  These are the names of the pre-existing residents  -->
+    <string name="steven_stevenson_string">Steven Stevenson</string>
+    <string name="ellen_ellington_string">Ellen Ellington</string>
+    <string name="william_wilson_string">William Wilson</string>
+    <string name="lucy_lucinda_string">Lucy Lucinda</string>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus

@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -44,12 +43,6 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        String unitOneResOneName = "Steven Stevenson";
-        binding.unit1Resident1Button.setText(unitOneResOneName);
-
-        String unitOneResTwoName = "Ellen Ellington";
-        binding.unit1Resident2Button.setText(unitOneResTwoName);
-
         binding.buttonFirst.setOnClickListener(v ->
                 NavHostFragment.findNavController(FirstFragment.this)
                         .navigate(R.id.action_FirstFragment_to_SecondFragment)
@@ -66,7 +59,7 @@ public class FirstFragment extends Fragment {
             bundle.putString("bio", "Steve worked as a shoe maker for 20 years.");
 
             NavHostFragment.findNavController(FirstFragment.this)
-                    .navigate(R.id.action_unit_one_to_resident, bundle);
+                    .navigate(R.id.action_FirstFragment_to_ResidentFragment, bundle);
         });
 
         binding.unit1Resident2Button.setOnClickListener(v -> {
@@ -78,7 +71,7 @@ public class FirstFragment extends Fragment {
             bundle.putString("bio", "Ellen is a passionate painter.");
 
             NavHostFragment.findNavController(FirstFragment.this)
-                    .navigate(R.id.action_unit_one_to_resident, bundle);
+                    .navigate(R.id.action_FirstFragment_to_ResidentFragment, bundle);
         });
 
         ResidentsViewModel viewModel = new ViewModelProvider(requireActivity()).get(ResidentsViewModel.class);
@@ -181,7 +174,7 @@ public class FirstFragment extends Fragment {
             bundle.putInt("age", age);
             bundle.putString("bio", bio);
             NavHostFragment.findNavController(FirstFragment.this)
-                    .navigate(R.id.action_unit_one_to_resident, bundle);
+                    .navigate(R.id.action_FirstFragment_to_ResidentFragment, bundle);
         });
 
     }
