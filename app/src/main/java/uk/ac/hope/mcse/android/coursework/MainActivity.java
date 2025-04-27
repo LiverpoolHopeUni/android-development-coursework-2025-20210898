@@ -15,6 +15,7 @@ import uk.ac.hope.mcse.android.coursework.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,18 +35,29 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+
+        // Hide the FAB if the current fragment is not FragmentOne or Fragment to since it
+        // has no function
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            if (destination.getId() == R.id.FirstFragment || destination.getId() == R.id.SecondFragment) {
+                binding.fab.setVisibility(View.VISIBLE);
+            } else {
+                binding.fab.setVisibility(View.GONE);
+            }
+        });
+
         binding.fab.setOnClickListener(v -> {
             NavDestination currentDestination = navController.getCurrentDestination();
 
-                // Is the fab clicked on the first fragment? Then:
+                // Is the FAB clicked on the first fragment? Then:
             if (currentDestination.getId() == R.id.FirstFragment) {
                 navController.navigate(R.id.action_FirstFragment_to_CreateResidentFragment);
             }
-            // Is the fab clicked on the second fragment? Then:
+
+            // Is the FAB clicked on the second fragment? Then:
             else if (currentDestination.getId() == R.id.SecondFragment) {
                 navController.navigate(R.id.action_SecondFragment_to_CreateResidentFragment);
             }
-
 
         });
 
