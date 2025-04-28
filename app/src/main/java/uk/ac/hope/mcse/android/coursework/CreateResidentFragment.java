@@ -76,24 +76,40 @@ public class CreateResidentFragment extends Fragment {
             // ResidentsViewModel class.
             binding.createResidentButton.setOnClickListener(v -> {
 
-                // Handling if the user does or doesn't select a profile picture.
-                Uri profile_picture = (residentProfilePictureUri != null) ?
-                        residentProfilePictureUri :
-                        Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.drawable.default_profile_icon_50x50);
+                try {
+                    // Setting default values if no input is given
+                    Uri profile_picture = (residentProfilePictureUri != null) ?
+                            residentProfilePictureUri :
+                            Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.drawable.default_profile_icon_50x50);
 
+                    String roomNumberInput = Objects.requireNonNull(binding.enterRoomNumberTextinputlayout.getEditText()).getText().toString();
+                    int room_number = roomNumberInput.trim().isEmpty() ? 0 : Integer.parseInt(roomNumberInput);
 
-                int room_number = Integer.parseInt(Objects.requireNonNull(binding.enterRoomNumberTextinputlayout.getEditText()).getText().toString());
-                String name = Objects.requireNonNull(binding.enterNameTextinputlayout.getEditText()).getText().toString();
-                int age = Integer.parseInt(Objects.requireNonNull(binding.enterAgeTextinputlayout.getEditText()).getText().toString());
-                String bio = Objects.requireNonNull(binding.enterBioTextinputlayout.getEditText()).getText().toString();
+                    String name = Objects.requireNonNull(binding.enterNameTextinputlayout.getEditText()).getText().toString();
+                    if (name.trim().isEmpty()) {
+                        name = "Name not entered";
+                    }
 
-                Bundle result = new Bundle();
+                    String ageInput = Objects.requireNonNull(binding.enterAgeTextinputlayout.getEditText()).getText().toString();
+                    int age = ageInput.trim().isEmpty() ? 0 : Integer.parseInt(ageInput);
 
-                result.putParcelable("new_resident", new Resident(profile_picture, room_number, name, age, bio));
+                    String bio = Objects.requireNonNull(binding.enterBioTextinputlayout.getEditText()).getText().toString();
+                    if (bio.trim().isEmpty()) {
+                        bio = "No biography entered.";
+                    }
 
-                getParentFragmentManager().setFragmentResult("resident_created", result);
+                    Bundle result = new Bundle();
+                    result.putParcelable("new_resident", new Resident(profile_picture, room_number, name, age, bio));
+                    getParentFragmentManager().setFragmentResult("resident_created", result);
+                    NavHostFragment.findNavController(this).popBackStack();
 
-                NavHostFragment.findNavController(this).popBackStack();
+                } catch (NumberFormatException e) {
+                        // If the user doesn't input a number for room_number and age then throw an
+                        // error
+                        binding.enterRoomNumberTextinputlayout.setError("Please input a number");
+                        binding.enterAgeTextinputlayout.setError("Please input a number");
+
+                }
             });
 
     }
