@@ -44,7 +44,7 @@ public class ResidentFragment extends Fragment {
 
             binding.residentProfilePictureImageview.setImageURI(profile_picture_uri != null ?
                     profile_picture_uri :
-                    Uri.parse("android.resource://" + getContext().getPackageName() +
+                    Uri.parse("android.resource://" + requireContext().getPackageName() +
                             "/" + profile_picture_not_uri));
             binding.residentRoomNumberTextview.append(" " + room_number);
             binding.residentNameTextview.append(" " + name);

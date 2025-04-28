@@ -29,6 +29,7 @@
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/blue"
+        android:contentDescription="@string/floating_action_bar_which_adds_new_residents_string"
         app:srcCompat="@drawable/plus_icon_24x24"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

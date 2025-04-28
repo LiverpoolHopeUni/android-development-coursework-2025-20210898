@@ -14,7 +14,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import java.util.Objects;
@@ -50,20 +49,6 @@ public class CreateResidentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
-            Bundle args = getArguments();
-            if (args != null) {
-                String targetFragment = args.getString("targetFragment", "");
-
-                if (targetFragment.equals("FirstFragment")) {
-                    SharedResidentsViewModel viewModel = new ViewModelProvider(requireParentFragment()).get(SharedResidentsViewModel.class);
-                }
-
-                else if (targetFragment.equals("SecondFragment")) {
-                    SharedResidentsViewModel viewModel = new ViewModelProvider(requireParentFragment()).get(SharedResidentsViewModel.class);
-                }
-
-            }
-
             // When the user clicks the select profile picture button, the image launcher is ran
             binding.getResidentPictureButton.setOnClickListener(v -> {
                 Intent intent = new Intent(Intent.ACTION_PICK);
@@ -80,7 +65,7 @@ public class CreateResidentFragment extends Fragment {
                     // Setting default values if no input is given
                     Uri profile_picture = (residentProfilePictureUri != null) ?
                             residentProfilePictureUri :
-                            Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.drawable.default_profile_icon_50x50);
+                            Uri.parse("android.resource://" + requireContext().getPackageName() + "/" + R.drawable.default_profile_icon_50x50);
 
                     String roomNumberInput = Objects.requireNonNull(binding.enterRoomNumberTextinputlayout.getEditText()).getText().toString();
                     int room_number = roomNumberInput.trim().isEmpty() ? 0 : Integer.parseInt(roomNumberInput);

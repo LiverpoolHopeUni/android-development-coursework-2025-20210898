@@ -41,4 +41,7 @@
     <string name="william_wilson_string">William Wilson</string>
     <string name="lucy_lucinda_string">Lucy Lucinda</string>
 
+    <!--  Content descriptions  -->
+    <string name="floating_action_bar_which_adds_new_residents_string">A black plus icon with a blue background.</string>
+
 </resources>

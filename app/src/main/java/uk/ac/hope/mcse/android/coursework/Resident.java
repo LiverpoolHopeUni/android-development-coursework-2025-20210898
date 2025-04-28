@@ -27,7 +27,7 @@ public class Resident implements Parcelable {
         bio = in.readString();
     }
 
-    public static final Creator<Resident> CREATOR = new Creator<Resident>() {
+    public static final Creator<Resident> CREATOR = new Creator<>() {
         @Override
         public Resident createFromParcel(Parcel in) {
             return new Resident(in);

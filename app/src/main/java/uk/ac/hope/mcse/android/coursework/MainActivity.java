@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             Bundle bundle = new Bundle();
 
                 // Is the FAB clicked on the first fragment? Then:
+            assert currentDestination != null;
             if (currentDestination.getId() == R.id.FirstFragment) {
                 bundle.putString("targetFragment", "FirstFragment");
                 navController.navigate(R.id.action_FirstFragment_to_CreateResidentFragment);
