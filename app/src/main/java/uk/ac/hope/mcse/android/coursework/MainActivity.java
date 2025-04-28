@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
 
-        // Hide the FAB if the current fragment is not FragmentOne or Fragment to since it
-        // has no function
+        // Hide the FAB if the current fragment is not FragmentOne or FragmentTwo since it
+        // has no function elsewhere
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.FirstFragment || destination.getId() == R.id.SecondFragment) {
                 binding.fab.setVisibility(View.VISIBLE);
@@ -49,13 +49,17 @@ public class MainActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(v -> {
             NavDestination currentDestination = navController.getCurrentDestination();
 
+            Bundle bundle = new Bundle();
+
                 // Is the FAB clicked on the first fragment? Then:
             if (currentDestination.getId() == R.id.FirstFragment) {
+                bundle.putString("targetFragment", "FirstFragment");
                 navController.navigate(R.id.action_FirstFragment_to_CreateResidentFragment);
             }
 
             // Is the FAB clicked on the second fragment? Then:
             else if (currentDestination.getId() == R.id.SecondFragment) {
+                bundle.putString("targetFragment", "SecondFragment");
                 navController.navigate(R.id.action_SecondFragment_to_CreateResidentFragment);
             }
 

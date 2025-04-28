@@ -75,14 +75,28 @@ public class SecondFragment extends Fragment {
                     .navigate(R.id.action_SecondFragment_to_ResidentFragment, bundle);
         });
 
-        ResidentsViewModel viewModel = new ViewModelProvider(requireActivity()).get(ResidentsViewModel.class);
+        // Getting the ViewModel object associated with the activity and creating buttons for each
+        // resident in the resident list intended for the SecondFragment
+        SharedResidentsViewModel viewModel = new ViewModelProvider(requireActivity()).get(SharedResidentsViewModel.class);
 
-        viewModel.getResidents().observe(getViewLifecycleOwner(), residents -> {
+        viewModel.getSecondFragmentResidents().observe(getViewLifecycleOwner(), residents -> {
             for (Resident r : residents) {
                 createNewResidentButton(r.getProfilePicture(), r.getRoomNumber(), r.getName(), r.getAge(), r.getBio());
             }
         });
 
+        // Handle requests from CreateResidentFragment to create a new resident object and store it
+        // in the SharedResidentsViewModel object's list for SecondFragment (Unit Two)
+        getParentFragmentManager().setFragmentResultListener(
+            "resident_created",
+            getViewLifecycleOwner(),
+            (requestKey, bundle) -> {
+                Resident newResident = bundle.getParcelable("new_resident");
+                if (newResident != null) {
+                    viewModel.addResidentToSecondFragment(newResident);
+                }
+            }
+        );
     }
 
     @Override
@@ -93,8 +107,6 @@ public class SecondFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     public void createNewResidentButton(Uri profile_picture, int room_number, String name, int age, String bio) {
-        ResidentsViewModel viewModel = new ViewModelProvider(requireActivity()).get(ResidentsViewModel.class);
-
         // Issues arose when trying to make this new button use a predefined style in themes.xml
         // therefore, chosen attributes are changed manually here
 
@@ -106,14 +118,10 @@ public class SecondFragment extends Fragment {
         MaterialButton newButton = new MaterialButton(context);
 
         // Setting its attributes
-        Drawable drawable = Drawable.createFromPath(profile_picture.getPath());
-        newButton.setIcon(drawable);
         newButton.setId(View.generateViewId());
         newButton.setText(name);
         newButton.setBackgroundColor(ContextCompat.getColor(context, R.color.green));
         newButton.setTextColor(ContextCompat.getColor(context, R.color.black));
-        //newButton.setIcon(ContextCompat.getDrawable(context, R.drawable.profile_icon_50x50));
-//        newButton.setIconGravity(MaterialButton.ICON_GRAVITY_TOP);
 
         // This is necessary to remove the borders from the buttons
         ShapeAppearanceModel shapeAppearanceModel = new ShapeAppearanceModel()
@@ -134,11 +142,14 @@ public class SecondFragment extends Fragment {
 
         int MARGIN = 5;
 
+        // What the first button created will be anchored to
+        int anchorViewID = R.id.unit_2_resident_1_button;
+
         // Positioning the new button correctly
         constraintSet.connect(
                 newButton.getId(),
                 ConstraintSet.TOP,
-                R.id.unit_2_resident_1_button,
+                anchorViewID,
                 ConstraintSet.BOTTOM,
                 MARGIN); // Connects the top of the new button to the bottom of unit_1_resident_1_button
 

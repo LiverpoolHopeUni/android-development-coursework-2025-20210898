@@ -72,12 +72,16 @@
     <fragment
         android:id="@+id/createResidentFragment"
         android:name="uk.ac.hope.mcse.android.coursework.CreateResidentFragment"
-        android:label="fragment_create_resident"
+        android:label="@string/create_new_resident_string"
         tools:layout="@layout/fragment_create_resident" >
 
         <action
             android:id="@+id/action_createResidentFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+
+        <argument
+            android:name="targetFragment"
+            app:argType="string" />
 
     </fragment>
 

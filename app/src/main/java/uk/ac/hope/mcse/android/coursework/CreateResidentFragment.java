@@ -50,9 +50,19 @@ public class CreateResidentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
+            Bundle args = getArguments();
+            if (args != null) {
+                String targetFragment = args.getString("targetFragment", "");
 
-            ResidentsViewModel viewModel = new ViewModelProvider(requireActivity()).get(ResidentsViewModel.class);
+                if (targetFragment.equals("FirstFragment")) {
+                    SharedResidentsViewModel viewModel = new ViewModelProvider(requireParentFragment()).get(SharedResidentsViewModel.class);
+                }
 
+                else if (targetFragment.equals("SecondFragment")) {
+                    SharedResidentsViewModel viewModel = new ViewModelProvider(requireParentFragment()).get(SharedResidentsViewModel.class);
+                }
+
+            }
 
             // When the user clicks the select profile picture button, the image launcher is ran
             binding.getResidentPictureButton.setOnClickListener(v -> {
@@ -70,12 +80,18 @@ public class CreateResidentFragment extends Fragment {
                 Uri profile_picture = (residentProfilePictureUri != null) ?
                         residentProfilePictureUri :
                         Uri.parse("android.resource://" + getContext().getPackageName() + "/" + R.drawable.default_profile_icon_50x50);
+
+
                 int room_number = Integer.parseInt(Objects.requireNonNull(binding.enterRoomNumberTextinputlayout.getEditText()).getText().toString());
                 String name = Objects.requireNonNull(binding.enterNameTextinputlayout.getEditText()).getText().toString();
                 int age = Integer.parseInt(Objects.requireNonNull(binding.enterAgeTextinputlayout.getEditText()).getText().toString());
                 String bio = Objects.requireNonNull(binding.enterBioTextinputlayout.getEditText()).getText().toString();
 
-                viewModel.addResident(new Resident(profile_picture, room_number, name, age, bio));
+                Bundle result = new Bundle();
+
+                result.putParcelable("new_resident", new Resident(profile_picture, room_number, name, age, bio));
+
+                getParentFragmentManager().setFragmentResult("resident_created", result);
 
                 NavHostFragment.findNavController(this).popBackStack();
             });
